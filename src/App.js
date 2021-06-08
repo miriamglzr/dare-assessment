@@ -1,23 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function App () {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <header>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          This app was created as an API Request App
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <form className="container">
+        <div className="mb-3">
+          <label for="exampleInputEmail1" className="form-label">
+            Enter id
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="client-id"
+            defaultValue="dare"
+          />
+          <div id="idHelp" className="form-text">
+            Please dare enter the user id.
+          </div>
+        </div>
+        <div className="mb-3">
+          <label for="exampleInputPassword1" className="form-label">
+            Password
+          </label>
+          <input
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
+            defaultValue="s3cr3t"
+          />
+          <div id="passwordHelp" className="form-text">
+            Please enter the s3cr3t password.
+          </div>
+        </div>
+
+        <button type="submit" className="btn btn-primary">Submit</button>
+      </form>
     </div>
   );
 }
