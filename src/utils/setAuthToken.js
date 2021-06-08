@@ -2,6 +2,7 @@
 import axios from 'axios';
 
 //This will be a function that chekcs if there is a token in the localStorage, and if so, it inserts it into the headers of any axios call
+// needs to add the bearer before the token
 const setAuthToken = token => {
   if (token) {
     axios.defaults.headers.common['Authorization'] = token;

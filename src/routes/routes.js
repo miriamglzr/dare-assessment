@@ -1,17 +1,25 @@
-import {axiosConfig} from '../../utils/axiosConfig';
+import {axiosConfig} from '../utils/axiosConfig';
 
-//    LOG IN
-export const loginUser = ({client_id, password}) => async dispatch => {
-  const body = {client_id, password};
+//  LOG IN
+
+export const loginUser = ({client_id, client_secret}) => {
+  const body = {client_id, client_secret};
+
+  console.log (body);
   let res;
   try {
-    res = await axiosConfig.post ('api/login', body);
-    console.log (res.status);
-    if (res.data) {
-      console.log (res.data); // show response message
-      // (loadUser ());
-    }
+    res = axiosConfig.post ('api/login', body);
+    res.then (function (result) {
+      console.log (result); // "Some User token"
+
+      if (result.data) {
+        console.log ('this is data response');
+        console.log (result.data); // show response message
+        // (loadUser ());
+      }
+    });
   } catch (error) {
+    console.log ('error');
     console.log (error);
     console.log (res);
     const errorMsg = error.response.data.errors[0].msg;
