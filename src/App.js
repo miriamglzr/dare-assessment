@@ -8,16 +8,20 @@ class App extends Component {
     var client_id = document.getElementById ('client_id').value;
     var client_secret = document.getElementById ('client_secret').value;
     if (client_id !== '' && client_secret !== '') {
-      console.log (client_id + '  ' + client_secret);
+      //  console.log (client_id + '  ' + client_secret);
       await loginUser ({client_id, client_secret});
     }
   };
-  openNotification = async () => {
-    // await props.sendNotification ('this is a notification');
-    // notification.info ({
-    //   message: `Error`,
-    //   description: `${notifications.notification ? notifications.notification : 'Error'}`,
-    // });
+
+  openNotification = arg => {
+    console.log (arg);
+    if (arg === 'getClients') {
+      console.log ('clients');
+      getClients (arg);
+    } else {
+      console.log ('policies');
+      getPolicies (arg);
+    }
   };
 
   render () {
