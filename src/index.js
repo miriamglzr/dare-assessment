@@ -3,6 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import axios from 'axios';
+
+// Add a response interceptor
+axios.interceptors.response.use (
+  function (response) {
+    return response;
+  },
+  function (error) {
+    //catches if the session ended!
+    if (localStorage.getItem ('token') && error.response.status === 401) {
+      console.log ('Redirection needed !');
+      window.location.replace ('/');
+      return;
+    }
+    return Promise.reject (error);
+  }
+);
 
 ReactDOM.render (
   <React.StrictMode>

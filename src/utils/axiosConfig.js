@@ -26,8 +26,9 @@ export const axiosConfig = {
     // console.log (url);
     return await axios.get (baseUrl + url, config);
   },
+
   post: async function (url, body, token = false) {
-    console.log ('axiosConfig is running');
+    //console.log ('axiosConfig is running');
     const config = {
       headers: {
         'Content-type': 'application/json',
@@ -39,7 +40,6 @@ export const axiosConfig = {
         setAuthToken (localStorage.token);
       }
     }
-    console.log ('this should work');
     return await axios.post (baseUrl + url, body, config);
   },
 };

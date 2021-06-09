@@ -5,63 +5,60 @@ import setAuthToken from '../utils/setAuthToken';
 
 export const loginUser = ({client_id, client_secret}) => {
   const body = {client_id, client_secret};
-
-  console.log (body);
   let res;
   try {
     res = axiosConfig.post ('api/login', body);
     res.then (function (result) {
-      console.log (result); // "Some User token"
-
+      // console.log (result); // "Some User token"
       if (result.data) {
-        console.log ('this is data response');
-        console.log (result.data); // show response message
+        //  console.log (result.data); // show response message
         setAuthToken (result.data.token);
       }
     });
   } catch (error) {
     console.log ('error');
-    const errorMsg = error.response.data.errors[0].msg;
-    const errorStat = error.response.status;
-    console.log (errorMsg);
-    console.log (errorStat);
+    localStorage.removeItem ('token');
   }
 };
 
 // ========= GET CLIENTS ===========
 
-export const getClients = () => {
+export const getClients = async () => {
   console.log ('route get Clients!');
   try {
-    let res = axiosConfig.get (`api/clients`, true);
-    res.then (function (result) {
+    const res = axiosConfig.get (`api/clients`, true);
+    let dataPromise = await res.then (function (result) {
       if (result.data.error === 'Unauthorized') {
-        console.log ('please log in and try again');
-        console.log (result.data); // show response message
-        setAuthToken (result.data.token);
-      } else if (result) {
-        console.log (result.data);
+        dataPromise = ['please log in and try again'];
+        // show response message
+        localStorage.removeItem ('token');
       }
+      return result.data;
     });
+    return dataPromise;
   } catch (error) {
     console.log (error);
+    localStorage.removeItem ('token');
   }
 };
 
-export const getPolicies = () => {
-  console.log ('route get Policies!');
+// ========= GET POLICIES ===========
+
+export const getPolicies = async () => {
+  // console.log ('route get Policies!');
   try {
-    let res = axiosConfig.get (`api/policies`, true);
-    res.then (function (result) {
+    const res = axiosConfig.get (`api/policies`, true);
+    let dataPromise = await res.then (function (result) {
       if (result.data.error === 'Unauthorized') {
-        console.log ('please log in and try again');
-        console.log (result.data); // show response message
-        setAuthToken (result.data.token);
-      } else if (result) {
-        console.log (result.data);
+        dataPromise = ['please log in and try again'];
+        // show response message
+        localStorage.removeItem ('token');
       }
+      return result.data;
     });
+    return dataPromise;
   } catch (error) {
     console.log (error);
+    localStorage.removeItem ('token');
   }
 };
