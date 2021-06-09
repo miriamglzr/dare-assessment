@@ -1,6 +1,6 @@
 # Dare-assessment
 
-NodeJs API REST Assessment, created with React Frontend!
+NodeJs API REST Assessment, simple fullstack app created with React Frontend!
 
 ## Getting started
 
