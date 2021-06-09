@@ -1,6 +1,6 @@
-### dare-assessment
+# Dare-assessment
 
-NodeJs API REST Assessment, created with a React Frontend
+NodeJs API REST Assessment, created with React Frontend!
 
 ## Getting started
 
@@ -10,7 +10,7 @@ https://cors-anywhere.herokuapp.com/corsdemo
 
 You will have temporary access to the demo server.
 
-Clone the repository to your computer.
+### Clone the repository to your computer.
 
 Open the project directory inside the Terminal;
 Make sure the packages are installled in yout local computer by running:
@@ -34,7 +34,10 @@ This project is currently fullstack and was created using:
 -Webpack: NodeJS, Express, Axios
 
 Here's a quick Visual.
+
 <img src="./img/login.png">
 <br/>
 <img src="./img/view.png">
 <br/>
+
+Thank you!
