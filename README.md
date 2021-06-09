@@ -39,5 +39,7 @@ Here's a quick Visual.
 <br/>
 <img src="./img/view.png">
 <br/>
+<img src="./img/dare-app.gif">
+<br/>
 
 Thank you!
